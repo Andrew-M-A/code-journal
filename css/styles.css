@@ -52,3 +52,10 @@ button {
   display: flex;
   justify-content: flex-end;
 }
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  font-size: 18px;
+  font-weight: 300;
+}
