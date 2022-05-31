@@ -2,15 +2,41 @@ body {
   background-color: #f0f0f0;
 }
 
+.sans-serif-font {
+  font-family: sans-serif;
+}
+
 header {
   color: white;
   background: #562b81;
+  letter-spacing: 1px;
+}
+
+label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 400;
+  letter-spacing: 2px;
 }
 
 img,
 input,
 textarea {
   width: 100%;
+  resize: none;
+}
+
+input,
+textarea {
+  border: 1px solid #ccc;
+  padding: 5px;
 }
 
 button {
@@ -25,20 +51,4 @@ button {
 .button-flex {
   display: flex;
   justify-content: flex-end;
-}
-
-.sans-serif-font {
-  font-family: sans-serif;
-}
-
-.margin-top-10 {
-  margin-top: 10px;
-}
-
-.letter-spacing-1 {
-  letter-spacing: 1.5;
-}
-
-.border-style {
-  color: grey;
 }

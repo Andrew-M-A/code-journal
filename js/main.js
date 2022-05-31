@@ -1,3 +1,5 @@
+/* global data */
+
 var $photoUrl = document.getElementById('photo-url');
 var $img = document.querySelector('img');
 
@@ -22,7 +24,7 @@ function getEntries(event) {
   $entriesObj.title = $titleValue;
   $entriesObj.url = $urlValue;
   $entriesObj.notes = $notesValue;
-  $entriesObj.nextEntryId = data.nextEntryId;
+  $entriesObj.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift($entriesObj);
 
