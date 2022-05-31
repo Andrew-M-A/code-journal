@@ -33,13 +33,3 @@ function getEntries(event) {
   $form.reset();
 
 }
-
-window.addEventListener('beforeunload', saveEntries);
-
-function saveEntries(event) {
-
-  var $storage = JSON.stringify(data);
-
-  localStorage.setItem('form-entries', $storage);
-
-}
