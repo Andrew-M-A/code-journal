@@ -26,6 +26,8 @@ function getEntries(event) {
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
+  $form.reset();
+
 }
 var $form = document.querySelector('form');
 $form.addEventListener('submit', getEntries);
