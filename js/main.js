@@ -24,6 +24,8 @@ function getEntries(event) {
   data.nextEntryId++;
   data.entries.unshift($entriesObj);
 
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
 }
 var $form = document.querySelector('form');
 $form.addEventListener('submit', getEntries);
