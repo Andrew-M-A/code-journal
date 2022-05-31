@@ -1,16 +1,44 @@
+body {
+  background-color: #f0f0f0;
+}
+
 header {
   color: white;
   background: #562b81;
 }
 
-img {
-  width: 100%;
-}
-
-input {
-  width: 100%;
-}
-
+img,
+input,
 textarea {
   width: 100%;
+}
+
+button {
+  color: white;
+  background-color: #562b81;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
+.button-flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sans-serif-font {
+  font-family: sans-serif;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.letter-spacing-1 {
+  letter-spacing: 1.5;
+}
+
+.border-style {
+  color: grey;
 }
