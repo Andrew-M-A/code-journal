@@ -22,6 +22,7 @@ function getEntries(event) {
   $entriesObj.notes = $notesValue;
   $entriesObj.nextEntryId = data.nextEntryId;
   data.nextEntryId++;
+  data.entries.unshift($entriesObj);
 
 }
 var $form = document.querySelector('form');
