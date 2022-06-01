@@ -23,7 +23,7 @@
         <div class="column-half">
           <p>Code Journal</p>
           <ul>
-            <li> <a href="">Entries</a> </li>
+            <li> <a href="" class="entry-form"> Entries </a> </li>
           </ul>
         </div>
       </div>
@@ -34,12 +34,12 @@
 
     <main>
 
-      <div data-view="entries">
+      <div data-view="entries" class="hidden">
 
         <div class="row">
           <div class="column-full">
             <h2>Entries</h2>
-            <button>NEW</button>
+            <a href="" class="entries"> NEW </a>
           </div>
         </div>
 
@@ -49,13 +49,13 @@
 
       </div>
 
-      <div class="row">
-        <div class="column-full">
-          <h2>New Entry</h2>
-        </div>
-      </div>
-
       <div data-view="entry-form">
+
+        <div class="row">
+          <div class="column-full">
+            <h2>New Entry</h2>
+          </div>
+        </div>
 
         <form id="code-entries">
           <div class="row">
