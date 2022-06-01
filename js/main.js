@@ -10,23 +10,26 @@ function updateImg(event) {
 }
 
 var $form = document.querySelector('form');
-$form.addEventListener('submit', getEntries);
+$form.addEventListener('submit', submitEntry);
 
-function getEntries(event) {
+function submitEntry(event) {
   event.preventDefault();
 
-  var $entriesObj = {};
+  var entriesObj = {};
 
   var $titleValue = document.getElementById('title-input').value;
   var $urlValue = document.getElementById('photo-url').value;
   var $notesValue = document.getElementById('user-notes').value;
 
-  $entriesObj.title = $titleValue;
-  $entriesObj.url = $urlValue;
-  $entriesObj.notes = $notesValue;
-  $entriesObj.entryId = data.nextEntryId;
+  entriesObj.title = $titleValue;
+  entriesObj.url = $urlValue;
+  entriesObj.notes = $notesValue;
+  entriesObj.entryId = data.nextEntryId;
   data.nextEntryId++;
-  data.entries.unshift($entriesObj);
+  data.entries.unshift(entriesObj);
+
+  var render = renderEntry(entriesObj);
+  $ul.prepend(render);
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
@@ -34,45 +37,42 @@ function getEntries(event) {
 
 }
 
-function renderEntries(entry) {
+function renderEntry(entry) {
 
   var $li = document.createElement('li');
 
   var $rowDiv = document.createElement('div');
   $rowDiv.setAttribute('class', 'row');
 
-  $li.appendChild($rowDiv);
-
   var $colHalfDiv = document.createElement('div');
   $colHalfDiv.setAttribute('class', 'column-half');
-
-  $rowDiv.appendChild($colHalfDiv);
 
   var $img = document.createElement('img');
   $img.setAttribute('src', data.entries[i].url);
 
-  $colHalfDiv.appendChild($img);
-
   var $colHalfDivTwo = document.createElement('div');
   $colHalfDivTwo.setAttribute('class', 'column-half');
 
-  $rowDiv.appendChild($colHalfDivTwo);
-
   var $h2 = document.createElement('h2');
   $h2.textContent = data.entries[i].title;
-  $colHalfDivTwo.appendChild($h2);
 
   var $p1 = document.createElement('p');
   $p1.textContent = data.entries[i].notes;
+
+  $li.appendChild($rowDiv);
+  $rowDiv.appendChild($colHalfDiv);
+  $colHalfDiv.appendChild($img);
+  $rowDiv.appendChild($colHalfDivTwo);
+  $colHalfDivTwo.appendChild($h2);
   $colHalfDivTwo.appendChild($p1);
 
   return $li;
 }
 
-var $ul = document.querySelector('ul');
+var $ul = document.querySelector('#append');
 
 for (var i = 0; i < data.entries.length; i++) {
-  $ul.appendChild(renderEntries(data.entries[i]));
+  $ul.appendChild(renderEntry(data.entries[i]));
 
 }
-window.addEventListener('DOMContentLoaded', renderEntries);
+window.addEventListener('DOMContentLoaded', renderEntry);

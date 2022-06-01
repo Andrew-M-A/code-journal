@@ -12,6 +12,11 @@ header {
   letter-spacing: 1px;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 label {
   display: inline-block;
   font-size: 12px;
