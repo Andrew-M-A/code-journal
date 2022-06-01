@@ -7,6 +7,15 @@ var data = {
   nextEntryId: 1
 };
 
+/* var parseArray = [];
+
+var previousEntriesJSON = localStorage.getItem('form-entries');
+
+if (previousEntriesJSON !== null) {
+  parseArray.push(JSON.parse(previousEntriesJSON));
+  console.log(parseArray);
+} */
+
 window.addEventListener('beforeunload', saveEntries);
 
 function saveEntries(event) {

@@ -36,8 +36,12 @@ function getEntries(event) {
 
 function renderEntries(entry) {
 
+  var $li = document.createElement('li');
+
   var $rowDiv = document.createElement('div');
   $rowDiv.setAttribute('class', 'row');
+
+  $li.appendChild($rowDiv);
 
   var $colHalfDiv = document.createElement('div');
   $colHalfDiv.setAttribute('class', 'column-half');
@@ -45,7 +49,7 @@ function renderEntries(entry) {
   $rowDiv.appendChild($colHalfDiv);
 
   var $img = document.createElement('img');
-  $img.setAttribute('src', ' ');
+  $img.setAttribute('src', data.entries.url);
 
   $colHalfDiv.appendChild($img);
 
@@ -54,27 +58,23 @@ function renderEntries(entry) {
 
   $rowDiv.appendChild($colHalfDivTwo);
 
-  var $ul = document.createElement('ul');
-  $colHalfDivTwo.appendChild($ul);
-
-  var $li1 = document.createElement('li');
-  var $li2 = document.createElement('li');
-  var $li3 = document.createElement('li');
-
-  $ul.appendChild($li1);
-  $ul.appendChild($li2);
-  $ul.appendChild($li3);
-
   var $h2 = document.createElement('h2');
-  $li1.appendChild($h2);
+  $h2.textContent = data.entries.title;
+  $colHalfDivTwo.appendChild($h2);
 
   var $p1 = document.createElement('p');
-  $li2.appendChild($p1);
+  $p1.textContent = data.entries.notes;
+  $colHalfDivTwo.appendChild($p1);
 
   var $p2 = document.createElement('p');
-  $li3.appendChild($p2);
+  $colHalfDivTwo.appendChild($p2);
 
-  return $rowDiv;
+  return $li;
 }
 
-window.addEventListener('DOMContentLoaded', renderEntries);
+var $ul = document.querySelector('ul');
+
+for (var render = 0; render < data.entries.length; render++) {
+  $ul.appendChild(renderEntries(data.entries[render]));
+
+} window.addEventListener('DOMContentLoaded', renderEntries);
