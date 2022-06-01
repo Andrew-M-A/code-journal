@@ -49,7 +49,7 @@ function renderEntries(entry) {
   $rowDiv.appendChild($colHalfDiv);
 
   var $img = document.createElement('img');
-  $img.setAttribute('src', data.entries.url);
+  $img.setAttribute('src', data.entries[i].url);
 
   $colHalfDiv.appendChild($img);
 
@@ -59,22 +59,20 @@ function renderEntries(entry) {
   $rowDiv.appendChild($colHalfDivTwo);
 
   var $h2 = document.createElement('h2');
-  $h2.textContent = data.entries.title;
+  $h2.textContent = data.entries[i].title;
   $colHalfDivTwo.appendChild($h2);
 
   var $p1 = document.createElement('p');
-  $p1.textContent = data.entries.notes;
+  $p1.textContent = data.entries[i].notes;
   $colHalfDivTwo.appendChild($p1);
-
-  var $p2 = document.createElement('p');
-  $colHalfDivTwo.appendChild($p2);
 
   return $li;
 }
 
 var $ul = document.querySelector('ul');
 
-for (var render = 0; render < data.entries.length; render++) {
-  $ul.appendChild(renderEntries(data.entries[render]));
+for (var i = 0; i < data.entries.length; i++) {
+  $ul.appendChild(renderEntries(data.entries[i]));
 
-} window.addEventListener('DOMContentLoaded', renderEntries);
+}
+window.addEventListener('DOMContentLoaded', renderEntries);
