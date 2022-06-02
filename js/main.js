@@ -52,16 +52,16 @@ function renderEntry(entry) {
   $colHalfDiv.setAttribute('class', 'column-half');
 
   var $img = document.createElement('img');
-  $img.setAttribute('src', data.entries[i].url);
+  $img.setAttribute('src', entry.url);
 
   var $colHalfDivTwo = document.createElement('div');
   $colHalfDivTwo.setAttribute('class', 'column-half');
 
   var $h2 = document.createElement('h2');
-  $h2.textContent = data.entries[i].title;
+  $h2.textContent = entry.title;
 
   var $p1 = document.createElement('p');
-  $p1.textContent = data.entries[i].notes;
+  $p1.textContent = entry.notes;
 
   $li.appendChild($rowDiv);
   $rowDiv.appendChild($colHalfDiv);
