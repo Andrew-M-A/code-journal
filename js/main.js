@@ -1,9 +1,13 @@
 /* global data */
 
-var $photoUrl = document.getElementById('photo-url');
 var $img = document.querySelector('img');
 var $ul = document.querySelector('#append');
+var $entryFormView = document.body.querySelector('[data-view="entry-form"]');
+var $entriesView = document.body.querySelector('[data-view="entries"]');
+// var $navEntries = document.querySelector('#nav-entries');
+// var $newButton = document.querySelector('#new-button');
 
+var $photoUrl = document.getElementById('photo-url');
 $photoUrl.addEventListener('input', updateImg);
 
 function updateImg(event) {
@@ -32,12 +36,16 @@ function submitEntry(event) {
   var render = renderEntry(entriesObj);
   $ul.prepend(render);
 
-  $views[1].className = 'hidden';
-  $views[0].className = '';
-
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
   $form.reset();
+
+  $entryFormView.className = 'hidden';
+  $entriesView.className = 'active';
+
+  data.view = $entriesView;
+
+  // console.log(data.view);
 
 }
 
@@ -77,26 +85,19 @@ window.addEventListener('DOMContentLoaded', renderEntry);
 
 for (var i = 0; i < data.entries.length; i++) {
   $ul.appendChild(renderEntry(data.entries[i]));
-
 }
 
-var $views = document.querySelectorAll('[data-view]');
-
-var $navEntriesLink = document.querySelector('.entry-form');
-$navEntriesLink.addEventListener('click', navClick);
-
-var $newButton = document.querySelector('.entries');
-
+/* $navEntries.addEventListener('click', navClick);
 $newButton.addEventListener('click', navClick);
 
-function navClick(event) {
-  event.preventDefault();
+ function navClick(event) {
 
   for (var i = 0; i < $views.length; i++) {
-    if ($views[i].getAttribute('data-view') !== event.target.className) {
-      $views[i].className = 'hidden';
+    if ($views[i].getAttribute('data-view') === event.target.className) {
+      $views[i].className = event.target.className;
     } else {
-      $views[i].className = '';
+      $views[i].className = 'hidden';
     }
   }
 }
+*/

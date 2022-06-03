@@ -12,12 +12,18 @@ header {
   letter-spacing: 1px;
 }
 
-a {
+div > a {
   color: white;
   text-decoration: none;
   background-color: #562b81;
   padding: 5px 15px;
   border-radius: 5px;
+}
+
+li > a {
+  color: white;
+  text-decoration: none;
+  background-color: #562b81;
 }
 
 label {

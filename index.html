@@ -16,41 +16,35 @@
 
 <body class="sans-serif-font">
 
-
   <header>
     <div class="container">
       <div class="row">
         <div class="column-half">
           <p>Code Journal</p>
           <ul>
-            <li> <a href="" class="entry-form"> Entries </a> </li>
+            <li> <a href="" id="nav-entries"> Entries </a> </li>
           </ul>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="container">
+  <main>
 
-    <main>
-
+    <div class="container">
       <div data-view="entries" class="hidden">
-
         <div class="row">
           <div class="column-full">
             <h2>Entries</h2>
-            <a href="" class="entries"> NEW </a>
+            <a href="" id="new-button"> NEW </a>
           </div>
         </div>
 
         <ul id="append">
-
         </ul>
-
       </div>
 
       <div data-view="entry-form">
-
         <div class="row">
           <div class="column-full">
             <h2>New Entry</h2>
@@ -60,7 +54,7 @@
         <form id="code-entries">
           <div class="row">
             <div class="column-half">
-              <img src="images/placeholder-image-square.jpg" alt="">
+              <img src="images/placeholder-image-square.jpg" alt="placeholder image">
             </div>
             <div class="column-half">
               <label for="title">Title</label>
@@ -79,17 +73,18 @@
 
           <div class="row">
             <div class="column-full button-flex">
-              <button type="submit">SAVE</button>
+              <button type="submit" class="entries">SAVE</button>
             </div>
           </div>
         </form>
 
       </div>
+    </div>
+  </main>
 
-    </main>
 
-    <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
