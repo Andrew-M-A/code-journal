@@ -97,8 +97,6 @@ function newButtonClick(event) {
   data.view = 'entry-form';
 }
 
-window.addEventListener('DOMContentLoaded', renderEntry);
-
 if (data.view === 'entries') {
   $entryFormView.className = 'hidden';
   $entriesView.className = 'active';
@@ -106,6 +104,8 @@ if (data.view === 'entries') {
   $entriesView.className = 'hidden';
   $entryFormView.className = 'active';
 }
+
+window.addEventListener('DOMContentLoaded', renderEntry);
 
 for (var i = 0; i < data.entries.length; i++) {
   $ul.appendChild(renderEntry(data.entries[i]));
