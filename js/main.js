@@ -4,22 +4,22 @@ var $img = document.querySelector('img');
 var $ul = document.querySelector('#append');
 var $entryFormView = document.body.querySelector('[data-view="entry-form"]');
 var $entriesView = document.body.querySelector('[data-view="entries"]');
-// var $navEntries = document.querySelector('#nav-entries');
-// var $newButton = document.querySelector('#new-button');
-
 var $photoUrl = document.getElementById('photo-url');
+var $form = document.querySelector('form');
+var $navEntries = document.querySelector('#nav-entries');
+var $newButton = document.querySelector('#new-button');
+
 $photoUrl.addEventListener('input', updateImg);
 
 function updateImg(event) {
   $img.setAttribute('src', event.target.value);
 }
 
-var $form = document.querySelector('form');
 $form.addEventListener('submit', submitEntry);
 
 function submitEntry(event) {
-  event.preventDefault();
 
+  event.preventDefault();
   var entriesObj = {};
 
   var $titleValue = document.getElementById('title-input').value;
@@ -38,14 +38,12 @@ function submitEntry(event) {
 
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
-  $form.reset();
-
   $entryFormView.className = 'hidden';
   $entriesView.className = 'active';
 
-  data.view = $entriesView;
+  data.view = 'entries';
 
-  // console.log(data.view);
+  $form.reset();
 
 }
 
@@ -81,23 +79,34 @@ function renderEntry(entry) {
   return $li;
 }
 
+$navEntries.addEventListener('click', navClick);
+$newButton.addEventListener('click', newButtonClick);
+
+function navClick(event) {
+
+  $entriesView.className = 'active';
+  $entryFormView.className = 'hidden';
+  data.view = 'entries';
+
+}
+
+function newButtonClick(event) {
+
+  $entryFormView.className = 'active';
+  $entriesView.className = 'hidden';
+  data.view = 'entry-form';
+}
+
 window.addEventListener('DOMContentLoaded', renderEntry);
+
+if (data.view === 'entries') {
+  $entryFormView.className = 'hidden';
+  $entriesView.className = 'active';
+} else {
+  $entriesView.className = 'hidden';
+  $entryFormView.className = 'active';
+}
 
 for (var i = 0; i < data.entries.length; i++) {
   $ul.appendChild(renderEntry(data.entries[i]));
 }
-
-/* $navEntries.addEventListener('click', navClick);
-$newButton.addEventListener('click', navClick);
-
- function navClick(event) {
-
-  for (var i = 0; i < $views.length; i++) {
-    if ($views[i].getAttribute('data-view') === event.target.className) {
-      $views[i].className = event.target.className;
-    } else {
-      $views[i].className = 'hidden';
-    }
-  }
-}
-*/
