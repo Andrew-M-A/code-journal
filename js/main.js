@@ -83,6 +83,8 @@ function renderEntry(entry) {
   return $li;
 }
 
+$ul.addEventListener('click', newButtonClick);
+
 $navEntries.addEventListener('click', navClick);
 $newButton.addEventListener('click', newButtonClick);
 
