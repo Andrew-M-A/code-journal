@@ -2,14 +2,55 @@ body {
   background-color: #f0f0f0;
 }
 
+#new-button {
+  margin: 20px;
+}
+
+.row-half {
+  flex-basis: 50%;
+}
+
+.margin-top-25 {
+  margin-top: 25px;
+}
+
 .sans-serif-font {
   font-family: sans-serif;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-flex {
+  display: flex;
+  justify-content: flex-end;
 }
 
 header {
   color: white;
   background: #562b81;
   letter-spacing: 1px;
+}
+
+a {
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+  background-color: #562b81;
+}
+
+div > a {
+  color: white;
+  text-decoration: none;
+  background-color: #562b81;
+  padding: 5px 15px;
+  border-radius: 5px;
 }
 
 label {
@@ -48,7 +89,9 @@ button {
   border: none;
 }
 
-.button-flex {
-  display: flex;
-  justify-content: flex-end;
+ul {
+  padding: 0;
+  list-style-type: none;
+  font-size: 18px;
+  font-weight: 300;
 }

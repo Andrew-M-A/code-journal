@@ -7,6 +7,12 @@ var data = {
   nextEntryId: 1
 };
 
+var previousEntriesJSON = localStorage.getItem('form-entries');
+
+if (previousEntriesJSON !== null) {
+  data = JSON.parse(previousEntriesJSON);
+}
+
 window.addEventListener('beforeunload', saveEntries);
 
 function saveEntries(event) {
