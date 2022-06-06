@@ -69,11 +69,15 @@ function renderEntry(entry) {
   var $p1 = document.createElement('p');
   $p1.textContent = entry.notes;
 
+  var $editIcon = document.createElement('i');
+  $editIcon.setAttribute('class', 'fa-solid fa-pencil');
+
   $li.appendChild($rowDiv);
   $rowDiv.appendChild($colHalfDiv);
   $colHalfDiv.appendChild($img);
   $rowDiv.appendChild($colHalfDivTwo);
   $colHalfDivTwo.appendChild($h2);
+  $colHalfDivTwo.appendChild($editIcon);
   $colHalfDivTwo.appendChild($p1);
 
   return $li;
