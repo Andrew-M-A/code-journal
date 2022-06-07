@@ -88,7 +88,7 @@ function editClick(event) {
 
   if (event.target.tagName === 'I') {
     var currentEntry = event.target.getAttribute('data-entry-id');
-    data.editing = (data.entries[data.entries.length - currentEntry]);
+    data.editing = data.entries[data.entries.length - currentEntry];
     newButtonClick();
   }
 }
