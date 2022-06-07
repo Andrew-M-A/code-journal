@@ -20,6 +20,7 @@ $form.addEventListener('submit', submitEntry);
 function submitEntry(event) {
 
   event.preventDefault();
+
   var entriesObj = {};
 
   var $titleValue = document.getElementById('title-input').value;
@@ -71,19 +72,28 @@ function renderEntry(entry) {
 
   var $editIcon = document.createElement('i');
   $editIcon.setAttribute('class', 'fa-solid fa-pencil');
+  $editIcon.setAttribute('data-entry-id', entry.entryId);
 
   $li.appendChild($rowDiv);
   $rowDiv.appendChild($colHalfDiv);
   $colHalfDiv.appendChild($img);
   $rowDiv.appendChild($colHalfDivTwo);
   $colHalfDivTwo.appendChild($h2);
-  $colHalfDivTwo.appendChild($editIcon);
+  $h2.appendChild($editIcon);
   $colHalfDivTwo.appendChild($p1);
-
   return $li;
 }
 
-$ul.addEventListener('click', newButtonClick);
+function editClick(event) {
+
+  if (event.target.tagName === 'I') {
+    var currentEntry = event.target.getAttribute('data-entry-id');
+    data.editing = (data.entries[data.entries.length - currentEntry]);
+    newButtonClick();
+  }
+}
+
+$ul.addEventListener('click', editClick);
 
 $navEntries.addEventListener('click', navClick);
 $newButton.addEventListener('click', newButtonClick);
