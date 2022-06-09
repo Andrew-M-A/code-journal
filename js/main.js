@@ -5,9 +5,13 @@ var $ul = document.querySelector('#append');
 var $entryFormView = document.body.querySelector('[data-view="entry-form"]');
 var $entriesView = document.body.querySelector('[data-view="entries"]');
 var $photoUrl = document.getElementById('photo-url');
+var $titleValue = document.getElementById('title-input').value;
+var $urlValue = document.getElementById('photo-url').value;
+var $notesValue = document.getElementById('user-notes').value;
 var $form = document.querySelector('form');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
+var $h2 = document.querySelector('#form-header');
 
 $photoUrl.addEventListener('input', updateImg);
 
@@ -22,10 +26,6 @@ function submitEntry(event) {
   event.preventDefault();
 
   var entriesObj = {};
-
-  var $titleValue = document.getElementById('title-input').value;
-  var $urlValue = document.getElementById('photo-url').value;
-  var $notesValue = document.getElementById('user-notes').value;
 
   entriesObj.title = $titleValue;
   entriesObj.url = $urlValue;
@@ -85,10 +85,15 @@ function renderEntry(entry) {
 }
 
 function editClick(event) {
-
   if (event.target.tagName === 'I') {
-    var currentEntry = event.target.getAttribute('data-entry-id');
+    $h2.textContent = 'Edit Entry';
+    var currentEntry = event.target.getAttribute('data-entry-id').toString();
     data.editing = data.entries[data.entries.length - currentEntry];
+
+    $titleValue = data.editing.title;
+    $urlValue = data.editing.url;
+    $notesValue = data.editing.notes;
+
     newButtonClick();
   }
 }
