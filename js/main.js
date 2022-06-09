@@ -12,6 +12,7 @@ var $form = document.querySelector('form');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
+var currentEntry = null;
 
 $photoUrl.addEventListener('input', updateImg);
 
@@ -25,19 +26,31 @@ function submitEntry(event) {
 
   event.preventDefault();
 
-  var entriesObj = {};
+  if (data.editing === null) {
 
-  entriesObj.title = $titleValue.value;
-  entriesObj.url = $urlValue.value;
-  entriesObj.notes = $notesValue.value;
-  entriesObj.entryId = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(entriesObj);
+    var entriesObj = {};
 
-  var render = renderEntry(entriesObj);
-  $ul.prepend(render);
+    entriesObj.title = $titleValue.value;
+    entriesObj.url = $urlValue.value;
+    entriesObj.notes = $notesValue.value;
+    entriesObj.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(entriesObj);
 
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+    var render = renderEntry(entriesObj);
+    $ul.prepend(render);
+
+    $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+  } else {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (currentEntry === data.entries[i].entryId) {
+        data.entries[i].title = $titleValue.value;
+        data.entries[i].url = $urlValue.value;
+        data.entries[i].notes = $notesValue.value;
+      }
+    }
+  }
 
   $entryFormView.className = 'hidden';
   $entriesView.className = 'active';
@@ -45,6 +58,8 @@ function submitEntry(event) {
   data.view = 'entries';
 
   $form.reset();
+
+  data.editing = null;
 
 }
 
@@ -84,23 +99,26 @@ function renderEntry(entry) {
   return $li;
 }
 
+$ul.addEventListener('click', editClick);
+
 function editClick(event) {
+
   if (event.target.tagName === 'I') {
     $h2.textContent = 'Edit Entry';
-    var currentEntry = event.target.getAttribute('data-entry-id').toString();
+    currentEntry = event.target.getAttribute('data-entry-id').toString();
     data.editing = data.entries[data.entries.length - currentEntry];
 
     $titleValue.value = data.editing.title;
     $urlValue.value = data.editing.url;
     $notesValue.value = data.editing.notes;
-
     $img.setAttribute('src', $urlValue.value);
 
-    newButtonClick();
+    $entriesView.className = 'hidden';
+    $entryFormView.className = 'active';
+    data.view = 'entry-form';
   }
+  currentEntry = parseInt(currentEntry);
 }
-
-$ul.addEventListener('click', editClick);
 
 $navEntries.addEventListener('click', navClick);
 $newButton.addEventListener('click', newButtonClick);
@@ -114,6 +132,8 @@ function navClick(event) {
 }
 
 function newButtonClick(event) {
+
+  $h2.textContent = 'New Entry';
 
   $entryFormView.className = 'active';
   $entriesView.className = 'hidden';
