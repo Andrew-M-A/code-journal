@@ -5,9 +5,9 @@ var $ul = document.querySelector('#append');
 var $entryFormView = document.body.querySelector('[data-view="entry-form"]');
 var $entriesView = document.body.querySelector('[data-view="entries"]');
 var $photoUrl = document.getElementById('photo-url');
-var $titleValue = document.getElementById('title-input').value;
-var $urlValue = document.getElementById('photo-url').value;
-var $notesValue = document.getElementById('user-notes').value;
+var $titleValue = document.getElementById('title-input');
+var $urlValue = document.getElementById('photo-url');
+var $notesValue = document.getElementById('user-notes');
 var $form = document.querySelector('form');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
@@ -27,9 +27,9 @@ function submitEntry(event) {
 
   var entriesObj = {};
 
-  entriesObj.title = $titleValue;
-  entriesObj.url = $urlValue;
-  entriesObj.notes = $notesValue;
+  entriesObj.title = $titleValue.value;
+  entriesObj.url = $urlValue.value;
+  entriesObj.notes = $notesValue.value;
   entriesObj.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(entriesObj);
@@ -90,9 +90,11 @@ function editClick(event) {
     var currentEntry = event.target.getAttribute('data-entry-id').toString();
     data.editing = data.entries[data.entries.length - currentEntry];
 
-    $titleValue = data.editing.title;
-    $urlValue = data.editing.url;
-    $notesValue = data.editing.notes;
+    $titleValue.value = data.editing.title;
+    $urlValue.value = data.editing.url;
+    $notesValue.value = data.editing.notes;
+
+    $img.setAttribute('src', $urlValue.value);
 
     newButtonClick();
   }
