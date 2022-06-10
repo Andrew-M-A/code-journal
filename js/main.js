@@ -1,14 +1,14 @@
 /* global data */
 
 var $img = document.querySelector('img');
-var $ul = document.querySelector('#append');
-var $entryFormView = document.body.querySelector('[data-view="entry-form"]');
-var $entriesView = document.body.querySelector('[data-view="entries"]');
+var $form = document.querySelector('form');
 var $photoUrl = document.getElementById('photo-url');
 var $titleValue = document.getElementById('title-input');
 var $urlValue = document.getElementById('photo-url');
 var $notesValue = document.getElementById('user-notes');
-var $form = document.querySelector('form');
+var $entryFormView = document.body.querySelector('[data-view="entry-form"]');
+var $entriesView = document.body.querySelector('[data-view="entries"]');
+var $ul = document.querySelector('#append');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
@@ -79,8 +79,8 @@ function renderEntry(entry) {
   var $colHalfDivTwo = document.createElement('div');
   $colHalfDivTwo.setAttribute('class', 'column-half');
 
-  var $h2 = document.createElement('h2');
-  $h2.textContent = entry.title;
+  var $h3 = document.createElement('h3');
+  $h3.textContent = entry.title;
 
   var $p1 = document.createElement('p');
   $p1.textContent = entry.notes;
@@ -93,8 +93,8 @@ function renderEntry(entry) {
   $rowDiv.appendChild($colHalfDiv);
   $colHalfDiv.appendChild($img);
   $rowDiv.appendChild($colHalfDivTwo);
-  $colHalfDivTwo.appendChild($h2);
-  $h2.appendChild($editIcon);
+  $colHalfDivTwo.appendChild($h3);
+  $h3.appendChild($editIcon);
   $colHalfDivTwo.appendChild($p1);
   return $li;
 }
