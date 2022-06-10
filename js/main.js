@@ -13,6 +13,7 @@ var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
 var currentEntry = null;
+var $l1 = document.querySelector('li');
 
 $photoUrl.addEventListener('input', updateImg);
 
@@ -43,11 +44,17 @@ function submitEntry(event) {
     $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
   } else {
+
+    var $list = document.querySelectorAll('li');
+
     for (var i = 0; i < data.entries.length; i++) {
       if (currentEntry === data.entries[i].entryId) {
-        data.entries[i].title = $titleValue.value;
-        data.entries[i].url = $urlValue.value;
-        data.entries[i].notes = $notesValue.value;
+        data.editing.title = $titleValue.value;
+        data.editing.url = $urlValue.value;
+        data.editing.notes = $notesValue.value;
+        $img.setAttribute('src', data.editing.url);
+        data.entries.splice(i, 1, data.editing);
+
       }
     }
   }
