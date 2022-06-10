@@ -32,6 +32,11 @@ body {
   justify-content: flex-end;
 }
 
+.style-icon {
+  margin-top: 1.3rem;
+  margin-right: 1rem;
+}
+
 header {
   color: white;
   background: #562b81;

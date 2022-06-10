@@ -87,6 +87,9 @@ function renderEntry(entry) {
   var $colHalfDivTwo = document.createElement('div');
   $colHalfDivTwo.setAttribute('class', 'column-half');
 
+  var $rowDivTwo = document.createElement('div');
+  $rowDivTwo.setAttribute('class', 'row space-between');
+
   var $h3 = document.createElement('h3');
   $h3.textContent = entry.title;
 
@@ -94,15 +97,16 @@ function renderEntry(entry) {
   $p1.textContent = entry.notes;
 
   var $editIcon = document.createElement('i');
-  $editIcon.setAttribute('class', 'fa-solid fa-pencil');
+  $editIcon.setAttribute('class', 'fa-solid fa-pencil style-icon');
   $editIcon.setAttribute('data-entry-id', entry.entryId);
 
   $li.appendChild($rowDiv);
   $rowDiv.appendChild($colHalfDiv);
   $colHalfDiv.appendChild($img);
   $rowDiv.appendChild($colHalfDivTwo);
-  $colHalfDivTwo.appendChild($h3);
-  $h3.appendChild($editIcon);
+  $colHalfDivTwo.appendChild($rowDivTwo);
+  $rowDivTwo.appendChild($h3);
+  $rowDivTwo.appendChild($editIcon);
   $colHalfDivTwo.appendChild($p1);
   return $li;
 }
