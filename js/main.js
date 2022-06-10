@@ -133,6 +133,8 @@ $newButton.addEventListener('click', newButtonClick);
 
 function navClick(event) {
 
+  $h2.textContent = 'Entries';
+
   $entriesView.className = 'active';
   $entryFormView.className = 'hidden';
   data.view = 'entries';
