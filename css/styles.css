@@ -67,6 +67,11 @@ h2 {
   letter-spacing: 2px;
 }
 
+h3 {
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
 img,
 input,
 textarea {
