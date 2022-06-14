@@ -14,6 +14,7 @@ var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
 var $footer = document.querySelector('#footer');
 var $deleteButton = document.querySelector('#delete');
+var $modalScreen = document.querySelector('.modal-screen');
 var currentEntry = null;
 
 $photoUrl.addEventListener('input', updateImg);
@@ -140,7 +141,8 @@ function editClick(event) {
 $deleteButton.addEventListener('click', deleteEntry);
 
 function deleteEntry(event) {
-  console.log('heyooo');
+  event.preventDefault();
+  $modalScreen.className = 'modal-screen';
 }
 
 $navEntries.addEventListener('click', navClick);
