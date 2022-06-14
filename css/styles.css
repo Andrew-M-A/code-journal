@@ -11,7 +11,7 @@ body {
 
 .pop-up-box {
   margin: 20rem auto;
-  width: 20rem;
+  width: 22rem;
   height: 10rem;
   padding: 15px;
   border-radius: 10px;
@@ -21,8 +21,8 @@ body {
 .modal-text {
   font-family: sans-serif;
   text-align: center;
-  font-size: 14px;
-  padding: 12px;
+  font-size: 15px;
+  padding: 15px;
 }
 
 .cancel-button {
@@ -70,10 +70,6 @@ body {
 
 .row-half {
   flex-basis: 50%;
-}
-
-.margin-top-25 {
-  margin-top: 25px;
 }
 
 .sans-serif-font {

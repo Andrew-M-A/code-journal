@@ -116,6 +116,43 @@ function renderEntry(entry) {
   return $li;
 }
 
+$navEntries.addEventListener('click', navClick);
+$newButton.addEventListener('click', newButtonClick);
+
+function navClick(event) {
+
+  $h2.textContent = 'Entries';
+
+  $entriesView.className = 'active';
+  $entryFormView.className = 'hidden';
+  data.view = 'entries';
+  data.editing = null;
+
+  $footer.className = 'column-full button-flex';
+  $deleteLink.className = 'delete button hidden';
+
+  $form.reset();
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+}
+
+function newButtonClick(event) {
+
+  $h2.textContent = 'New Entry';
+
+  $entryFormView.className = 'active';
+  $entriesView.className = 'hidden';
+  data.view = 'entry-form';
+}
+
+if (data.view === 'entries') {
+  $entryFormView.className = 'hidden';
+  $entriesView.className = 'active';
+} else {
+  $entriesView.className = 'hidden';
+  $entryFormView.className = 'active';
+}
+
 $ul.addEventListener('click', editClick);
 
 function editClick(event) {
@@ -175,41 +212,6 @@ function deleteEntry(event) {
   $entriesView.className = 'active';
   data.view = 'entries';
   $form.reset();
-}
-
-$navEntries.addEventListener('click', navClick);
-$newButton.addEventListener('click', newButtonClick);
-
-function navClick(event) {
-
-  $h2.textContent = 'Entries';
-
-  $entriesView.className = 'active';
-  $entryFormView.className = 'hidden';
-  data.view = 'entries';
-
-  $footer.className = 'column-full button-flex';
-  $deleteLink.className = 'delete button hidden';
-
-  $form.reset();
-
-}
-
-function newButtonClick(event) {
-
-  $h2.textContent = 'New Entry';
-
-  $entryFormView.className = 'active';
-  $entriesView.className = 'hidden';
-  data.view = 'entry-form';
-}
-
-if (data.view === 'entries') {
-  $entryFormView.className = 'hidden';
-  $entriesView.className = 'active';
-} else {
-  $entriesView.className = 'hidden';
-  $entryFormView.className = 'active';
 }
 
 window.addEventListener('DOMContentLoaded', renderEntry);
