@@ -12,10 +12,12 @@ var $ul = document.querySelector('#append');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
+var $list = document.querySelectorAll('li');
 var $footer = document.querySelector('#footer');
 var $deleteLink = document.querySelector('#delete');
 var $modalScreen = document.querySelector('.modal-screen');
 var $cancelButton = document.querySelector('.cancel-button');
+var $confirmDeleteButton = document.querySelector('.confirm-button');
 var currentEntry = null;
 
 $photoUrl.addEventListener('input', updateImg);
@@ -47,8 +49,6 @@ function submitEntry(event) {
     $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
   } else {
-
-    var $list = document.querySelectorAll('li');
 
     for (var i = 0; i < data.entries.length; i++) {
       if (currentEntry === data.entries[i].entryId) {
@@ -119,6 +119,8 @@ $ul.addEventListener('click', editClick);
 
 function editClick(event) {
 
+  event.preventDefault();
+
   if (event.target.tagName === 'I') {
     $h2.textContent = 'Edit Entry';
     currentEntry = event.target.getAttribute('data-entry-id').toString();
@@ -139,9 +141,9 @@ function editClick(event) {
   currentEntry = parseInt(currentEntry);
 }
 
-$deleteLink.addEventListener('click', deleteEntry);
+$deleteLink.addEventListener('click', showModal);
 
-function deleteEntry(event) {
+function showModal(event) {
   event.preventDefault();
   $modalScreen.className = 'modal-screen';
 }
@@ -150,6 +152,30 @@ $cancelButton.addEventListener('click', hideModal);
 
 function hideModal(event) {
   $modalScreen.className = 'modal-screen hidden';
+}
+
+$confirmDeleteButton.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+  console.log('value of currentEntry: ', currentEntry);
+  console.log('value of data.editing: ', data.editing);
+  console.log('value of data.entries: ', data.entries);
+  console.log(data.entries[data.entries.length - currentEntry]);
+
+  // for (var i = 0; i < data.entries.length; i++) {
+  //   if (currentEntry === data.entries[i].entryId) {
+  //     data.entries.splice(i, 1);
+  //     console.log(data.entries);
+  //   }
+  // }
+
+  hideModal();
+  $footer.className = 'column-full button-flex';
+  $deleteLink.className = 'delete button hidden';
+  $entryFormView.className = 'hidden';
+  $entriesView.className = 'active';
+  data.view = 'entries';
+  $form.reset();
 }
 
 $navEntries.addEventListener('click', navClick);
@@ -162,6 +188,11 @@ function navClick(event) {
   $entriesView.className = 'active';
   $entryFormView.className = 'hidden';
   data.view = 'entries';
+
+  $footer.className = 'column-full button-flex';
+  $deleteLink.className = 'delete button hidden';
+
+  $form.reset();
 
 }
 
