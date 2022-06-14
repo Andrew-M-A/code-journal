@@ -12,7 +12,6 @@ var $ul = document.querySelector('#append');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
-var $list = document.querySelectorAll('li');
 var $footer = document.querySelector('#footer');
 var $deleteLink = document.querySelector('#delete');
 var $modalScreen = document.querySelector('.modal-screen');
@@ -49,6 +48,8 @@ function submitEntry(event) {
     $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
   } else {
+
+    var $list = document.querySelectorAll('li');
 
     for (var i = 0; i < data.entries.length; i++) {
       if (currentEntry === data.entries[i].entryId) {
@@ -157,17 +158,15 @@ function hideModal(event) {
 $confirmDeleteButton.addEventListener('click', deleteEntry);
 
 function deleteEntry(event) {
-  console.log('value of currentEntry: ', currentEntry);
-  console.log('value of data.editing: ', data.editing);
-  console.log('value of data.entries: ', data.entries);
-  console.log(data.entries[data.entries.length - currentEntry]);
 
-  // for (var i = 0; i < data.entries.length; i++) {
-  //   if (currentEntry === data.entries[i].entryId) {
-  //     data.entries.splice(i, 1);
-  //     console.log(data.entries);
-  //   }
-  // }
+  var $list = document.querySelectorAll('li');
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (currentEntry === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
+      $list[i].remove();
+    }
+  }
 
   hideModal();
   $footer.className = 'column-full button-flex';
