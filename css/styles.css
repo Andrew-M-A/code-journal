@@ -3,19 +3,44 @@ body {
 }
 
 .modal-screen {
+  position: fixed;
   min-height: 100vh;
   background: rgb(0 0 0 / 70%);
-  position: fixed;
   width: 100%;
 }
 
-.modal-box {
+.pop-up-box {
+  margin: 20rem auto;
+  width: 20rem;
+  height: 10rem;
+  padding: 10px;
+  border-radius: 10px;
   background-color: white;
+}
+
+.modal-text {
+  font-family: sans-serif;
   text-align: center;
+  font-size: 14px;
+  padding: 15px;
+}
+
+.cancel-button {
+  color: black;
+  background-color: darkgrey;
+  padding: 10px;
   border-radius: 5px;
-  width: 700px;
-  height: 300px;
-  padding: 20px 50px 10px;
+  margin-top: 10px;
+  border: none;
+}
+
+.confirm-button {
+  color: white;
+  background-color: red;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
 }
 
 #new-button {
