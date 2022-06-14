@@ -12,6 +12,8 @@ var $ul = document.querySelector('#append');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
+var $footer = document.querySelector('#footer');
+var $deleteButton = document.querySelector('#delete');
 var currentEntry = null;
 
 $photoUrl.addEventListener('input', updateImg);
@@ -128,8 +130,17 @@ function editClick(event) {
     $entriesView.className = 'hidden';
     $entryFormView.className = 'active';
     data.view = 'entry-form';
+
+    $footer.className = 'column-full space-between';
+    $deleteButton.className = 'delete button';
   }
   currentEntry = parseInt(currentEntry);
+}
+
+$deleteButton.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+  console.log('heyooo');
 }
 
 $navEntries.addEventListener('click', navClick);

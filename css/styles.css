@@ -2,8 +2,40 @@ body {
   background-color: #f0f0f0;
 }
 
+.modal-screen {
+  min-height: 100vh;
+  background: rgb(0 0 0 / 70%);
+  position: fixed;
+  width: 100%;
+}
+
+.modal-box {
+  background-color: white;
+  text-align: center;
+  border-radius: 5px;
+  width: 700px;
+  height: 300px;
+  padding: 20px 50px 10px;
+}
+
 #new-button {
   margin: 20px;
+}
+
+#nav-entries {
+  color: white;
+  text-decoration: none;
+  background-color: #562b81;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+#delete {
+  border: none;
+  margin-top: 20px;
+  color: red;
+  text-decoration: underline;
 }
 
 .row-half {
@@ -37,25 +69,19 @@ body {
   margin-right: 1rem;
 }
 
+.save-button {
+  color: white;
+  background-color: #562b81;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
 header {
   color: white;
   background: #562b81;
   letter-spacing: 1px;
-}
-
-a {
-  margin-left: 10px;
-  color: white;
-  text-decoration: none;
-  background-color: #562b81;
-}
-
-div > a {
-  color: white;
-  text-decoration: none;
-  background-color: #562b81;
-  padding: 5px 15px;
-  border-radius: 5px;
 }
 
 label {
@@ -88,15 +114,6 @@ input,
 textarea {
   border: 1px solid #ccc;
   padding: 5px;
-}
-
-button {
-  color: white;
-  background-color: #562b81;
-  padding: 5px 15px;
-  border-radius: 5px;
-  margin-top: 10px;
-  border: none;
 }
 
 ul {
