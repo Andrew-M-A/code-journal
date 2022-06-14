@@ -13,8 +13,9 @@ var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
 var $footer = document.querySelector('#footer');
-var $deleteButton = document.querySelector('#delete');
+var $deleteLink = document.querySelector('#delete');
 var $modalScreen = document.querySelector('.modal-screen');
+var $cancelButton = document.querySelector('.cancel-button');
 var currentEntry = null;
 
 $photoUrl.addEventListener('input', updateImg);
@@ -133,16 +134,22 @@ function editClick(event) {
     data.view = 'entry-form';
 
     $footer.className = 'column-full space-between';
-    $deleteButton.className = 'delete button';
+    $deleteLink.className = 'delete button';
   }
   currentEntry = parseInt(currentEntry);
 }
 
-$deleteButton.addEventListener('click', deleteEntry);
+$deleteLink.addEventListener('click', deleteEntry);
 
 function deleteEntry(event) {
   event.preventDefault();
   $modalScreen.className = 'modal-screen';
+}
+
+$cancelButton.addEventListener('click', hideModal);
+
+function hideModal(event) {
+  $modalScreen.className = 'modal-screen hidden';
 }
 
 $navEntries.addEventListener('click', navClick);
