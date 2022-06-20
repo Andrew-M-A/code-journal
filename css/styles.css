@@ -2,16 +2,74 @@ body {
   background-color: #f0f0f0;
 }
 
+.modal-screen {
+  position: fixed;
+  min-height: 100vh;
+  background: rgb(0 0 0 / 70%);
+  width: 100%;
+}
+
+.pop-up-box {
+  margin: 20rem auto;
+  width: 22rem;
+  height: 10rem;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.modal-text {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 15px;
+  padding: 15px;
+}
+
+.cancel-button {
+  color: black;
+  background-color: darkgrey;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
+.confirm-button {
+  color: white;
+  background-color: #dc2526;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
 #new-button {
   margin: 20px;
+  color: white;
+  background-color: #562b81;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+#nav-entries {
+  color: white;
+  text-decoration: none;
+  background-color: #562b81;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+#delete {
+  border: none;
+  margin-top: 20px;
+  color: red;
+  text-decoration: underline;
 }
 
 .row-half {
   flex-basis: 50%;
-}
-
-.margin-top-25 {
-  margin-top: 25px;
 }
 
 .sans-serif-font {
@@ -37,25 +95,19 @@ body {
   margin-right: 1rem;
 }
 
+.save-button {
+  color: white;
+  background-color: #562b81;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
 header {
   color: white;
   background: #562b81;
   letter-spacing: 1px;
-}
-
-a {
-  margin-left: 10px;
-  color: white;
-  text-decoration: none;
-  background-color: #562b81;
-}
-
-div > a {
-  color: white;
-  text-decoration: none;
-  background-color: #562b81;
-  padding: 5px 15px;
-  border-radius: 5px;
 }
 
 label {
@@ -88,15 +140,6 @@ input,
 textarea {
   border: 1px solid #ccc;
   padding: 5px;
-}
-
-button {
-  color: white;
-  background-color: #562b81;
-  padding: 5px 15px;
-  border-radius: 5px;
-  margin-top: 10px;
-  border: none;
 }
 
 ul {

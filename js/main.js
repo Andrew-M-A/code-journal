@@ -12,6 +12,11 @@ var $ul = document.querySelector('#append');
 var $navEntries = document.querySelector('#nav-entries');
 var $newButton = document.querySelector('#new-button');
 var $h2 = document.querySelector('#form-header');
+var $footer = document.querySelector('#footer');
+var $deleteLink = document.querySelector('#delete');
+var $modalScreen = document.querySelector('.modal-screen');
+var $cancelButton = document.querySelector('.cancel-button');
+var $confirmDeleteButton = document.querySelector('.confirm-button');
 var currentEntry = null;
 
 $photoUrl.addEventListener('input', updateImg);
@@ -111,27 +116,6 @@ function renderEntry(entry) {
   return $li;
 }
 
-$ul.addEventListener('click', editClick);
-
-function editClick(event) {
-
-  if (event.target.tagName === 'I') {
-    $h2.textContent = 'Edit Entry';
-    currentEntry = event.target.getAttribute('data-entry-id').toString();
-    data.editing = data.entries[data.entries.length - currentEntry];
-
-    $titleValue.value = data.editing.title;
-    $urlValue.value = data.editing.url;
-    $notesValue.value = data.editing.notes;
-    $img.setAttribute('src', $urlValue.value);
-
-    $entriesView.className = 'hidden';
-    $entryFormView.className = 'active';
-    data.view = 'entry-form';
-  }
-  currentEntry = parseInt(currentEntry);
-}
-
 $navEntries.addEventListener('click', navClick);
 $newButton.addEventListener('click', newButtonClick);
 
@@ -142,6 +126,13 @@ function navClick(event) {
   $entriesView.className = 'active';
   $entryFormView.className = 'hidden';
   data.view = 'entries';
+  data.editing = null;
+
+  $footer.className = 'column-full button-flex';
+  $deleteLink.className = 'delete button hidden';
+
+  $form.reset();
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
 
 }
 
@@ -160,6 +151,67 @@ if (data.view === 'entries') {
 } else {
   $entriesView.className = 'hidden';
   $entryFormView.className = 'active';
+}
+
+$ul.addEventListener('click', editClick);
+
+function editClick(event) {
+
+  event.preventDefault();
+
+  if (event.target.tagName === 'I') {
+    $h2.textContent = 'Edit Entry';
+    currentEntry = event.target.getAttribute('data-entry-id').toString();
+    data.editing = data.entries[data.entries.length - currentEntry];
+
+    $titleValue.value = data.editing.title;
+    $urlValue.value = data.editing.url;
+    $notesValue.value = data.editing.notes;
+    $img.setAttribute('src', $urlValue.value);
+
+    $entriesView.className = 'hidden';
+    $entryFormView.className = 'active';
+    data.view = 'entry-form';
+
+    $footer.className = 'column-full space-between';
+    $deleteLink.className = 'delete button';
+  }
+  currentEntry = parseInt(currentEntry);
+}
+
+$deleteLink.addEventListener('click', showModal);
+
+function showModal(event) {
+  event.preventDefault();
+  $modalScreen.className = 'modal-screen';
+}
+
+$cancelButton.addEventListener('click', hideModal);
+
+function hideModal(event) {
+  $modalScreen.className = 'modal-screen hidden';
+}
+
+$confirmDeleteButton.addEventListener('click', deleteEntry);
+
+function deleteEntry(event) {
+
+  var $list = document.querySelectorAll('li');
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (currentEntry === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
+      $list[i].remove();
+    }
+  }
+
+  hideModal();
+  $footer.className = 'column-full button-flex';
+  $deleteLink.className = 'delete button hidden';
+  $entryFormView.className = 'hidden';
+  $entriesView.className = 'active';
+  data.view = 'entries';
+  $form.reset();
 }
 
 window.addEventListener('DOMContentLoaded', renderEntry);
